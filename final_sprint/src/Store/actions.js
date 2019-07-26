@@ -5,6 +5,7 @@ export const LOGIN_START = 'LOGIN_START';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAIL = 'LOGIN_FAIL';
 export const REGISTER = 'REGISTER';
+export const FETCH_JOKES = 'FETCH_JOKES';
 
 
 export const register = creds => dispatch => {
@@ -33,4 +34,15 @@ export const login = creds => dispatch => {
       
       dispatch({ type: LOGIN_FAIL, payload: err.response.data.message });
     });
+};
+
+export const fetchJokes = () => dispatch => {
+ axiosWithAuth().get('http://localhost:3300/api/jokes')
+ .then(res => {
+   debugger
+   dispatch({ type: FETCH_JOKES, payload: res.data})
+ })
+ .catch(err => {
+   debugger
+ });
 };
