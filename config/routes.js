@@ -19,7 +19,7 @@ function register(req, res) {
   Users.add(user)
     .then(saved => {
       const token = tokenService.generateToken(user);
-      res.status(201).json({ saved, message: `registered, ${token}` });
+      res.status(201).json({ saved, token: token });
     })
     .catch(error => {
       res.status(500).json(error);
