@@ -4,7 +4,8 @@ const db = require("../database/dbConfig.js");
     add,
     find,
     findBy,
-    findById
+    findById,
+    remove
   };
 
    function find() {
@@ -27,3 +28,7 @@ const db = require("../database/dbConfig.js");
       .where({ id })
       .first();
   } 
+
+  function remove(id) {
+    return db('users').where({ id }).delete();
+  }
